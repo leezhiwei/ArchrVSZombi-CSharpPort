@@ -1,4 +1,5 @@
-﻿using System;
+﻿// From https://stackoverflow.com/questions/495647/serialize-class-containing-dictionary-member
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
