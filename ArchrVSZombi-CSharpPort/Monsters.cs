@@ -2,7 +2,7 @@
 
 namespace ArchrVSZombi_CSharpPort
 {
-    internal class Monsters:Entities
+    public class Monsters:Entities
     {
         public int Reward { get; set; }
         public int Moves { get; set; }

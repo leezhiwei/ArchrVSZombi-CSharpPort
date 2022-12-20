@@ -1,6 +1,6 @@
 ﻿namespace ArchrVSZombi_CSharpPort
 {
-    internal abstract class Entities
+    public abstract class Entities
     {
         public string Type { get; set; }
         public string Name { get; set; }

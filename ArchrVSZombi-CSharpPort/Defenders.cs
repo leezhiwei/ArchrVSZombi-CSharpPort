@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace ArchrVSZombi_CSharpPort
 {
-    internal class Defenders : Entities
+    public class Defenders : Entities
     {
         public int Price { get; set; }
         public Defenders() : base() { }

@@ -2,7 +2,7 @@
 
 namespace ArchrVSZombi_CSharpPort
 {
-    internal class Field
+    public class Field
     {
         public int LastChar { get; set; }
         public List<List<List<string>>> StringField { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace ArchrVSZombi_CSharpPort
 {
-    internal class GameVars
+    public class GameVars
     {
         public Dictionary<string, int> GVariables { get; set; }
         public GameVars()
