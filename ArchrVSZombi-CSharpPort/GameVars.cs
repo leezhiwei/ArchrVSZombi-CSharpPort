@@ -10,10 +10,11 @@
             GVariables.Add("monster_kill_target", 20);
             GVariables.Add("monsters_killed", 0);
             GVariables.Add("num_monsters", 0);
-            GVariables.Add("gold", 0);
+            GVariables.Add("gold", 10);
             GVariables.Add("threat", 0);
             GVariables.Add("max_threat", 10);
             GVariables.Add("danger_level", 1);
+
         }
         public void ShowCombMenu()
         {
