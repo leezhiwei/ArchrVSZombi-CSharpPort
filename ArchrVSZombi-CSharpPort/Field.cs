@@ -2,9 +2,12 @@
 {
     internal class Field
     {
+        public int LastChar { get; set; }
         public List<List<List<string>>> StringField { get; set; }
         public Field()
         {
+            char lettera = 'A';
+            int a = lettera;
             int row = 5;
             int col = 7;
             StringField = new List<List<List<string>>>();
@@ -14,10 +17,11 @@
                 for (int y = 0; y < col; y++)
                 {
                     StringField[x].Add(new List<String>());
-                    StringField[x][y].Add("a");
-                    StringField[x][y].Add("a");
+                    StringField[x][y].Add("");
+                    StringField[x][y].Add("");
                 }
             }
+            LastChar = a + row;
         }
         public Field(int row, int col)
         {
