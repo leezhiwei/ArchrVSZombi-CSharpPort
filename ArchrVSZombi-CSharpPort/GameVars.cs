@@ -2,10 +2,10 @@
 {
     public class GameVars
     {
-        public Dictionary<string, int> GVariables { get; set; }
+        public SerializableDictionary<string, int> GVariables { get; set; }
         public GameVars()
         {
-            GVariables = new Dictionary<string, int>();
+            GVariables = new SerializableDictionary<string, int>();
             GVariables.Add("turn", 0);
             GVariables.Add("monster_kill_target", 20);
             GVariables.Add("monsters_killed", 0);
