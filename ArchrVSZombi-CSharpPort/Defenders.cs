@@ -15,16 +15,11 @@ namespace ArchrVSZombi_CSharpPort
         }
         public bool PlaceDef(Field f, string pos)
         {
-            List<char> alpha = new List<char>();
             List<int> collist = new List<int> { 1, 2, 3 };
             char row;
             char col;
             int rowindex;
             int colindex;
-            for (int x = (int)'A'; x < f.LastChar; x++)
-            {
-                alpha.Add((char)x);
-            }
             if (pos.Length != 2)
             {
                 return false;
@@ -39,9 +34,9 @@ namespace ArchrVSZombi_CSharpPort
             {
                 return false;
             }
-            if (alpha.Contains(row))
+            if (f.RowList.Contains(row))
             {
-                rowindex = alpha.IndexOf(row);
+                rowindex = f.RowList.IndexOf(row);
                 Console.WriteLine(char.GetNumericValue(col));
                 if (collist.Contains(Convert.ToInt32(char.GetNumericValue(col))))
                 {
@@ -128,11 +123,6 @@ namespace ArchrVSZombi_CSharpPort
         }
         public void DefAttack(Field f, int row, int col, List<Monsters> monlist, GameVars g)
         {
-            List<char> rowlist = new List<char>();
-            for (int x = (int)'A'; x < f.LastChar; x++)
-            {
-                rowlist.Add((char)x);
-            }
             if (ShortName == "ARCHR")
             {
                 foreach (var line in f.StringField[row])
@@ -149,7 +139,7 @@ namespace ArchrVSZombi_CSharpPort
                                 damage = Convert.ToInt32(Math.Round(mondamage / 2));
                             }
                             int remhealth = Convert.ToInt32(healthlist[0]) - damage;
-                            Console.WriteLine($"{Name} in lane {rowlist[row]} shoots {monster.Name} for {damage} damage!");
+                            Console.WriteLine($"{Name} in lane {f.RowList[row]} shoots {monster.Name} for {damage} damage!");
                             if (remhealth <= 0)
                             {
                                 Console.WriteLine($"{monster.Name} dies!");
@@ -198,7 +188,7 @@ namespace ArchrVSZombi_CSharpPort
                                         string[] healthlist = f.StringField[rowindex][columnindex][1].Split("/");
                                         int damage = 9;
                                         int remhealth = Convert.ToInt32(healthlist[0]) - damage;
-                                        Console.WriteLine($"{Name} in lane {rowlist[rowindex]} explodes and damages {mon.ShortName[0]} for {damage} damage!");
+                                        Console.WriteLine($"{Name} in lane {f.RowList[rowindex]} explodes and damages {mon.ShortName[0]} for {damage} damage!");
                                         if (remhealth <= 0)
                                         {
                                             Console.WriteLine($"{mon.Name} dies!");

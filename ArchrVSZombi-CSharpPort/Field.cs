@@ -1,9 +1,12 @@
-﻿namespace ArchrVSZombi_CSharpPort
+﻿using System.Data;
+
+namespace ArchrVSZombi_CSharpPort
 {
     internal class Field
     {
         public int LastChar { get; set; }
         public List<List<List<string>>> StringField { get; set; }
+        public List<char> RowList { get; set; }
         public Field()
         {
             char lettera = 'A';
@@ -22,6 +25,11 @@
                 }
             }
             LastChar = a + row;
+            RowList = new List<char>();
+            for (int x = (int)'A'; x < LastChar; x++)
+            {
+                RowList.Add((char)x);
+            }
         }
         public Field(int row, int col)
         {
@@ -65,6 +73,23 @@
                 Console.WriteLine("|");
             }
             Console.WriteLine("  " + String.Concat(Enumerable.Repeat("+-----", StringField[0].Count())) + "+");
+        }
+        public bool FieldCheck(List<Monsters> monlist)
+        {
+            foreach (var row in StringField)
+            {
+                foreach (var col in row)
+                {
+                    foreach (Monsters m in monlist)
+                    {
+                        if (col[0] == m.ShortName)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
     }
 }
