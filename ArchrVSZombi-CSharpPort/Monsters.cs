@@ -16,7 +16,7 @@ namespace ArchrVSZombi_CSharpPort
         {
             int monindex = new Random().Next(0,mlist.Count());
             int rownum = new Random().Next(0, f.StringField.Count());
-            int col = -1;
+            int col = f.StringField[0].Count() - 1;
             Monsters monchosen = mlist[monindex];
             f.StringField[rownum][col][0] = monchosen.ShortName;
             f.StringField[rownum][col][1] = $"{monchosen.MaxHP}/{monchosen.MaxHP}";
