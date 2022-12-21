@@ -43,6 +43,7 @@ void EndTurn(Field f, GameVars g, List<Monsters> mlist, List<Defenders> deflist)
             m.Reward++;
             m.MaxHP++;
         }
+        Console.WriteLine("The evil grows stronger!");
         ThreatChecker(g, f, mlist);
     }
 }
@@ -60,7 +61,10 @@ string MonCheck(Field f, List < Monsters > mlist)
     {
         foreach (Monsters m in mlist)
         {
-            return m.Name;
+            if (row[0][0] == m.ShortName)
+            {
+                return m.Name;
+            }
         }
     }
     return null;
@@ -203,7 +207,7 @@ while (true)
             {
                 try
                 {
-                    Console.Write("Your choice?");
+                    Console.Write("Your choice? ");
                     sel = Convert.ToInt32(Console.ReadLine());
                 }
                 catch
@@ -467,6 +471,14 @@ while (true)
                 Console.WriteLine("You have inputted an invalid option, please choose from option above.");
             }
         }
+    }
+    else if (sel == 4)
+    {
+        break;
+    }
+    else
+    {
+        Console.WriteLine("Invalid option, select from numbers above.");
     }
 }
 Console.WriteLine("See you next time!");

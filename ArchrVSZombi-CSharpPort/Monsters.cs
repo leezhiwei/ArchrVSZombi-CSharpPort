@@ -7,7 +7,7 @@ namespace ArchrVSZombi_CSharpPort
         public int Reward { get; set; }
         public int Moves { get; set; }
         public Monsters() : base() { }
-        public Monsters(string n, string sn, int mhp, int mind, int maxd, int mo, int r) : base("Defenders", n, sn, mhp, mind, maxd)
+        public Monsters(string n, string sn, int mhp, int mind, int maxd, int mo, int r) : base("Monsters", n, sn, mhp, mind, maxd)
         {
             Reward = r;
             Moves = mo;

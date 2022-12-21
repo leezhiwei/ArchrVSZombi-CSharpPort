@@ -149,8 +149,9 @@ namespace ArchrVSZombi_CSharpPort
                                 line[0] = "";
                                 line[1] = "";
                                 g.GVariables["threat"] += monster.Reward;
+                                return;
                             }
-                            line[1] = $"{damage}/{healthlist[1]}";
+                            line[1] = $"{remhealth}/{healthlist[1]}";
                         }
                     }
                 }
