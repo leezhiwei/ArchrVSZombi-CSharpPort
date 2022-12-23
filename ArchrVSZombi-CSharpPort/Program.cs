@@ -33,7 +33,7 @@ void EndTurn(Field f, GameVars g, List<Monsters> mlist, List<Defenders> deflist)
     }
     g.GVariables["gold"]++;
     g.GVariables["threat"] += new Random().Next(1, g.GVariables["danger_level"]);
-    if (g.GVariables["turn"] % 12 == 0)
+    if ((g.GVariables["turn"] % 12) == 0)
     {
         g.GVariables["danger_level"]++;
         foreach (Monsters m in mlist)
@@ -44,8 +44,8 @@ void EndTurn(Field f, GameVars g, List<Monsters> mlist, List<Defenders> deflist)
             m.MaxHP++;
         }
         Console.WriteLine("The evil grows stronger!");
-        ThreatChecker(g, f, mlist);
     }
+    ThreatChecker(g, f, mlist);
 }
 bool KillCount(GameVars g)
 {
@@ -212,7 +212,7 @@ while (true)
                 }
                 catch
                 {
-                    Console.WriteLine("Invalid choixe, choose a number instead.");
+                    Console.WriteLine("Invalid choice, choose a number instead.");
                     continue;
                 }
                 if (sel == 1)
@@ -329,6 +329,8 @@ while (true)
                 bool loop = true;
                 int baserow = mainfield.StringField.Count();
                 int basecol = mainfield.StringField[0].Count();
+                int newrow = 0;
+                int newcol = 0;
                 while (loop)
                 {
                     Console.WriteLine($"The current board size is {baserow} by {basecol}");
@@ -342,7 +344,7 @@ while (true)
                             try
                             {
                                 Console.Write("How many rows do you want? ");
-                                int newrow = Convert.ToInt32(Console.ReadLine());
+                                newrow = Convert.ToInt32(Console.ReadLine());
                             }
                             catch
                             {
@@ -352,14 +354,14 @@ while (true)
                             try
                             {
                                 Console.Write("How many columns do you want? ");
-                                int newcol = Convert.ToInt32(Console.ReadLine());
+                                newcol = Convert.ToInt32(Console.ReadLine());
                             }
                             catch
                             {
                                 Console.WriteLine("You have entered an invalid option");
                                 continue;
                             }
-                            mainfield = new Field(baserow, basecol);
+                            mainfield = new Field(newrow, newcol);
                             loop = false;
                             break;
                         }

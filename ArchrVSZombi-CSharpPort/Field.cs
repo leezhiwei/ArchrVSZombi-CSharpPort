@@ -33,6 +33,8 @@ namespace ArchrVSZombi_CSharpPort
         }
         public Field(int row, int col)
         {
+            char lettera = 'A';
+            int a = lettera;
             StringField = new List<List<List<string>>>();
             for (int x = 0; x < row; x++)
             {
@@ -43,6 +45,12 @@ namespace ArchrVSZombi_CSharpPort
                     StringField[x][y].Add("");
                     StringField[x][y].Add("");
                 }
+            }
+            LastChar = a + row;
+            RowList = new List<char>();
+            for (int x = (int)'A'; x < LastChar; x++)
+            {
+                RowList.Add((char)x);
             }
         }
         public void DrawField()

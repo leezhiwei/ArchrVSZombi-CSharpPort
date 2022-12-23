@@ -36,8 +36,7 @@ namespace ArchrVSZombi_CSharpPort
             }
             if (f.RowList.Contains(row))
             {
-                rowindex = f.RowList.IndexOf(row);
-                Console.WriteLine(char.GetNumericValue(col));
+                rowindex = f.RowList.IndexOf(row); 
                 if (collist.Contains(Convert.ToInt32(char.GetNumericValue(col))))
                 {
                     colindex = collist.IndexOf(Convert.ToInt32(char.GetNumericValue((col))));
