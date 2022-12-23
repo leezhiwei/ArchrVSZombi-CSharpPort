@@ -150,7 +150,7 @@ bool FileCheck()
     }
     return true;
 }
-Field mainfield = new Field();
+Field mainfield = new Field(true);
 GameVars GameVariables = new GameVars();
 Defenders archer = new Defenders("Archer", "ARCHR", 5, 1, 4, 5);
 Defenders wall = new Defenders("Wall", "WALL", 20, 0, 0, 3);

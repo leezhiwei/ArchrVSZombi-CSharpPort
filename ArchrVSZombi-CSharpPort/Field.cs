@@ -7,7 +7,8 @@ namespace ArchrVSZombi_CSharpPort
         public int LastChar { get; set; }
         public List<List<List<string>>> StringField { get; set; }
         public List<char> RowList { get; set; }
-        public Field()
+        public Field() { }
+        public Field(bool foroverloadonly)
         {
             char lettera = 'A';
             int a = lettera;

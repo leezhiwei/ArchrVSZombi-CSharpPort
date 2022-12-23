@@ -193,7 +193,7 @@ namespace ArchrVSZombi_CSharpPort
                                         string[] healthlist = f.StringField[rowindex][columnindex][1].Split("/");
                                         int damage = 9;
                                         int remhealth = Convert.ToInt32(healthlist[0]) - damage;
-                                        Console.WriteLine($"{Name} in lane {f.RowList[rowindex]} explodes and damages {mon.ShortName[0]} for {damage} damage!");
+                                        Console.WriteLine($"{Name} in lane {f.RowList[rowindex]} explodes and damages {mon.ShortName} for {damage} damage!");
                                         if (remhealth <= 0)
                                         {
                                             Console.WriteLine($"{mon.Name} dies!");
