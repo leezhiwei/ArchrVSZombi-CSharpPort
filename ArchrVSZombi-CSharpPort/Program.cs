@@ -127,7 +127,7 @@ void SaveGame(Field f, List<Defenders> deflist, List<Monsters> monlist, GameVars
     XmlSerialization.WriteToXmlFile("./gamevars.xml", g);
     Console.WriteLine("Game Saved.");
 }
-void LoadGame(Field f, GameVars g, List<Monsters> mlist, List<Defenders> deflist)
+void LoadGame(ref Field f, ref GameVars g, ref List<Monsters> mlist, ref List<Defenders> deflist)
 {
     f = XmlSerialization.ReadFromXmlFile<Field>("./field.xml");
     deflist = XmlSerialization.ReadFromXmlFile<List<Defenders>>("./deflist.xml");
@@ -297,7 +297,7 @@ while (true)
         }
         else
         {
-            LoadGame(mainfield, GameVariables, monlist, deflist);
+            LoadGame(ref mainfield, ref GameVariables, ref monlist, ref deflist);
             continueflag= true;
             sel = 1;
             continue;
