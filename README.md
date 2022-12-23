@@ -1,5 +1,7 @@
 # ArchrVSZombi-CSharpPort
 This is a rewrite of my previous semester's Python assignment, in C#!
+## Build and test statuses each commit
+[![build and test](https://github.com/leezhiwei/ArchrVSZombi-CSharpPort/actions/workflows/build-validationandtest.yml/badge.svg)](https://github.com/leezhiwei/ArchrVSZombi-CSharpPort/actions/workflows/build-validationandtest.yml)
 ## How different is it from the previous one?
 These two differs in terms of
 1. This is even more buggier than the last one, since I did a whole rewrite in C# including classes and subclasses like Entity and Field, it is way more sloppy and buggy. Still has some kinks to work out.
