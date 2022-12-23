@@ -132,10 +132,15 @@ namespace ArchrVSZombi_CSharpPort
                         {
                             string[] healthlist = line[1].Split('/');
                             int damage = new Random().Next(MinDamage,MaxDamage);
+                            Console.WriteLine($"Damage is {damage} points");
                             if (monster.ShortName == "SKELE")
                             {
                                 double mondamage = damage;
                                 damage = Convert.ToInt32(Math.Round(mondamage / 2));
+                                if (damage == 0)
+                                {
+                                    damage = 1;
+                                }
                             }
                             int remhealth = Convert.ToInt32(healthlist[0]) - damage;
                             Console.WriteLine($"{Name} in lane {f.RowList[row]} shoots {monster.Name} for {damage} damage!");

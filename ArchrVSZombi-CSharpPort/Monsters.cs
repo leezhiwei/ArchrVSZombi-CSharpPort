@@ -27,27 +27,26 @@ namespace ArchrVSZombi_CSharpPort
             {
                 if (f.StringField[row][col - 1][0].Length != 0)
                 {
-                    foreach (Defenders d in deflist)
+                    Defenders d = DefChecker(deflist, f.StringField[row][col - 1][0]);
+                    if (d is not null)
                     {
-                        if (f.StringField[row][col - 1][0] == d.ShortName)
+                        string[] hlist = f.StringField[row][col - 1][1].Split('/');
+                        int damage = new Random().Next(MinDamage, MaxDamage);
+                        int remhealth = Convert.ToInt32(hlist[1]) - damage;
+                        Console.WriteLine($"{Name} in lane {f.RowList[row]} hits {d.Name} for {damage} damage!");
+                        if (remhealth <= 0)
                         {
-                            string[] hlist = f.StringField[row][col - 1][1].Split('/');
-                            int damage = new Random().Next(MinDamage, MaxDamage);
-                            int remhealth = Convert.ToInt32(hlist[1]) - damage;
-                            Console.WriteLine($"{Name} in lane {f.RowList[row]} hits {d.Name} for {damage} damage!");
-                            if (remhealth <= 0)
-                            {
-                                f.StringField[row][col - 1][0] = "";
-                                f.StringField[row][col - 1][1] = "";
-                                return;
-                            }
-                            f.StringField[row][col - 1][1] = $"{remhealth}/{MaxHP}";
-                        }
-                        else
-                        {
-                            Console.WriteLine($"{Name} in lane {f.RowList[row]} is blocked from advancing.");
+                            f.StringField[row][col - 1][0] = "";
+                            f.StringField[row][col - 1][1] = "";
                             return;
                         }
+                        f.StringField[row][col - 1][1] = $"{remhealth}/{hlist[1]}";
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{Name} in lane {f.RowList[row]} is blocked from advancing.");
+                        return;
                     }
                 }
             }
@@ -55,34 +54,33 @@ namespace ArchrVSZombi_CSharpPort
             {
                 if (f.StringField[row][col - 1][0].Length != 0)
                 {
-                    foreach (Defenders d in deflist)
+                    Defenders d = DefChecker(deflist, f.StringField[row][col - 1][0]);
+
+                    if (d is not null)
                     {
-                        if (d.ShortName == f.StringField[row][col - 1][0])
+                        string[] hlist = f.StringField[row][col - 1][1].Split('/');
+                        int damage = new Random().Next(MinDamage, MaxDamage);
+                        int remhealth = Convert.ToInt32(hlist[0]) - damage;
+                        Console.WriteLine($"{Name} in lane {f.RowList[row]} hits {d.Name} for {damage} damage!");
+                        if (remhealth <= 0)
                         {
-                            string[] hlist = f.StringField[row][col - 1][1].Split('/');
-                            int damage = new Random().Next(MinDamage, MaxDamage);
-                            int remhealth = Convert.ToInt32(hlist[0]) - damage;
-                            Console.WriteLine($"{Name} in lane {f.RowList[row]} hits {d.Name} for {damage} damage!");
-                            if (remhealth <= 0)
-                            {
-                                f.StringField[row][col - 1][0] = "";
-                                f.StringField[row][col - 1][1] = "";
-                                return;
-                            }
-                            f.StringField[row][col - 1][1] = $"{remhealth}/{MaxHP}";
+                            f.StringField[row][col - 1][0] = "";
+                            f.StringField[row][col - 1][1] = "";
                             return;
                         }
-                        else
-                        {
-                            Console.WriteLine($"{Name} in lane {f.RowList[row]} is blocked from advancing.'");
-                            return;
-                        }
+                        f.StringField[row][col - 1][1] = $"{remhealth}/{hlist[1]}";
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{Name} in lane {f.RowList[row]} is blocked from advancing.'");
+                        return;
                     }
                 }
                 else if (f.StringField[row][col - 2][0].Length != 0)
                 {
-                    f.StringField[row][col - 2][0] = f.StringField[row][col][0];
-                    f.StringField[row][col - 2][1] = f.StringField[row][col][1];
+                    f.StringField[row][col - 1][0] = f.StringField[row][col][0];
+                    f.StringField[row][col - 1][1] = f.StringField[row][col][1];
                     f.StringField[row][col][0] = "";
                     f.StringField[row][col][1] = "";
                     return;
@@ -100,6 +98,16 @@ namespace ArchrVSZombi_CSharpPort
             Console.WriteLine($"{Name} in lane {f.RowList[row]} advances!");
             return;
         }
-
+        public Defenders DefChecker(List<Defenders> deflist, string shortname)
+        {
+            foreach (Defenders d in deflist)
+            {
+                if (d.ShortName == shortname)
+                {
+                    return d;
+                }
+            }
+            return null;
+        }
     }
 }
