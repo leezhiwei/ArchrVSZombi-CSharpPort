@@ -11,4 +11,4 @@ Well, I wanted a challenge and I got it. It was a whole heck of a time rewriting
 ## Any more porting?
 Yes, I intend to try and port this to pure C, both compilable by GCC and other compilers.
 ## Can I contribute?
-Yes, please oh my. If you want to help me, shoot me and email or my contact methods. I will be sure to get in contact.
+Yes, please oh my. If you want to help me, fork it then push to the main branch. I will be doing some checking as well. Thanks! 
